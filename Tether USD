@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tether USD • Academic Blockchain Project</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0b0d 0%, #1a1b1f 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+            background: radial-gradient(circle at 20% 50%, rgba(38, 161, 123, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(38, 161, 123, 0.1) 0%, transparent 50%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 60px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: #26A17B;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            transform: rotate(45deg);
+        }
+        
+        .logo-icon span {
+            transform: rotate(-45deg);
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, #26A17B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            color: #26A17B;
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(38, 161, 123, 0.1);
+            border: 1px solid rgba(38, 161, 123, 0.3);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            color: #26A17B;
+            margin-bottom: 20px;
+        }
+        
+        .hero h2 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #26A17B 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #26A17B;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .btn-primary {
+            background: #26A17B;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary:hover {
+            background: #1e7a5c;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-secondary:hover {
+            border-color: #26A17B;
+        }
+        
+        .token-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 30px;
+            padding: 30px;
+        }
+        
+        .token-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .token-logo {
+            width: 60px;
+            height: 60px;
+            background: #26A17B;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 800;
+        }
+        
+        .token-info h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .token-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .detail-value {
+            color: #26A17B;
+            font-weight: 600;
+        }
+        
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+        
+        .feature-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+        
+        .feature-card:hover {
+            border-color: #26A17B;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(38, 161, 123, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #26A17B;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            color: #888;
+            font-size: 14px;
+        }
+        
+        /* Actions */
+        .actions {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 30px;
+            padding: 60px;
+            text-align: center;
+            margin-bottom: 100px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        
+        .action-btn {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px 40px;
+            border-radius: 50px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 250px;
+            justify-content: center;
+            text-decoration: none;
+        }
+        
+        .action-btn:hover {
+            border-color: #26A17B;
+            background: #26A17B;
+        }
+        
+        #status {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        
+        .status-success {
+            background: rgba(38, 161, 123, 0.1);
+            border: 1px solid #26A17B;
+            color: #26A17B;
+        }
+        
+        .status-error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff4444;
+            color: #ff4444;
+        }
+        
+        .contract-address {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0,0,0,0.3);
+            padding: 15px 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .contract-address code {
+            font-size: 16px;
+            color: #26A17B;
+            word-break: break-all;
+            flex: 1;
+        }
+        
+        .copy-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: #26A17B;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #666;
+        }
+        
+        .footer-email {
+            color: #26A17B;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <div class="logo-icon"><span>₮</span></div>
+                <div class="logo-text">
+                    <h1>Tether USD</h1>
+                    <p>Academic Blockchain Project</p>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#contract">Contract</a>
+                <a href="#actions">Actions</a>
+            </div>
+        </nav>
+        
+        <section class="hero">
+            <div>
+                <span class="hero-badge"><i class="fas fa-check-circle"></i> Verified on Etherscan</span>
+                <h2>Tether USD<br>Academic Edition</h2>
+                <p>Advanced ERC20 implementation with blacklist, pause, and fee mechanisms.</p>
+                
+                <div class="hero-stats">
+                    <div><div class="stat-value">100M</div><div class="stat-label">Supply</div></div>
+                    <div><div class="stat-value">6</div><div class="stat-label">Decimals</div></div>
+                    <div><div class="stat-value">✓</div><div class="stat-label">Verified</div></div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="addToMetaMask()">
+                        <i class="fas fa-fox"></i> Add to MetaMask
+                    </button>
+                    <a href="https://link.trustwallet.com/add_asset?asset=c60_t0x00c65F601b66849112664173a0Ac3597AcBcA3Ab" target="_blank">
+                        <button class="btn-secondary">
+                            <i class="fas fa-wallet"></i> Trust Wallet
+                        </button>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="token-card">
+                <div class="token-header">
+                    <div class="token-logo">₮</div>
+                    <div class="token-info">
+                        <h3>Tether USD</h3>
+                        <p>USDT • 6 Decimals</p>
+                    </div>
+                </div>
+                <div class="token-detail">
+                    <span>Contract</span>
+                    <span class="detail-value">0x00c6...A3Ab</span>
+                </div>
+                <div class="token-detail">
+                    <span>Network</span>
+                    <span class="detail-value">Ethereum</span>
+                </div>
+            </div>
+        </section>
+        
+        <section class="features" id="features">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-ban"></i></div>
+                <h4>Blacklist</h4>
+                <p>Block suspicious addresses</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-pause-circle"></i></div>
+                <h4>Pausable</h4>
+                <p>Emergency stop transfers</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-percent"></i></div>
+                <h4>Fee System</h4>
+                <p>Configurable transfer fees</p>
+            </div>
+        </section>
+        
+        <section class="actions" id="actions">
+            <h3 style="font-size: 36px; margin-bottom: 20px;">Token Actions</h3>
+            <p>Add to wallet with one click</p>
+            
+            <div class="action-buttons">
+                <button class="action-btn" onclick="addToMetaMask()">
+                    <i class="fas fa-fox"></i> MetaMask
+                </button>
+                
+                <a href="https://link.trustwallet.com/add_asset?asset=c60_t0x00c65F601b66849112664173a0Ac3597AcBcA3Ab" target="_blank">
+                    <button class="action-btn">
+                        <i class="fas fa-wallet"></i> Trust Wallet
+                    </button>
+                </a>
+                
+                <a href="https://metamask.app.link/send/pay?address=0x74594e2C5D0ac70b65Bc62532a6fb7f12bf336cb&token=0x00c65F601b66849112664173a0Ac3597AcBcA3Ab" target="_blank">
+                    <button class="action-btn">
+                        <i class="fas fa-paper-plane"></i> Send to Professor
+                    </button>
+                </a>
+            </div>
+            
+            <div id="status"></div>
+            
+            <div class="contract-address">
+                <code>0x00c65F601b66849112664173a0Ac3597AcBcA3Ab</code>
+                <button class="copy-btn" onclick="copyAddress()">Copy</button>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>© 2026 Tether USD Academic Project</p>
+            <p><a href="mailto:tetherusd.project@gmail.com" class="footer-email">tetherusd.project@gmail.com</a></p>
+        </footer>
+    </div>
+
+    <script>
+        const CONTRACT = "0x00c65F601b66849112664173a0Ac3597AcBcA3Ab";
+        
+        function copyAddress() {
+            navigator.clipboard.writeText(CONTRACT);
+            alert('Contract address copied!');
+        }
+        
+        async function addToMetaMask() {
+            if (!window.ethereum) {
+                document.getElementById('status').innerHTML = '<div class="status-error">❌ MetaMask not installed</div>';
+                return;
+            }
+            
+            try {
+                const wasAdded = await window.ethereum.request({
+                    method: 'wallet_watchAsset',
+                    params: {
+                        type: 'ERC20',
+                        options: {
+                            address: CONTRACT,
+                            symbol: 'USDT',
+                            decimals: 6,
+                            image: 'https://raw.githubusercontent.com/YOUR_USERNAME/token-assets/main/logo.png'
+                        }
+                    }
+                });
+                
+                if (wasAdded) {
+                    document.getElementById('status').innerHTML = '<div class="status-success">✅ Token added to MetaMask!</div>';
+                }
+            } catch (error) {
+                document.getElementById('status').innerHTML = '<div class="status-error">❌ ' + error.message + '</div>';
+            }
+        }
+    </script>
+</body>
+</html>
