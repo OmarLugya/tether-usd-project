@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tether USD • Academic Blockchain Project</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0b0d 0%, #1a1b1f 100%);
+            color: white;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo { font-size: 24px; font-weight: 700; color: #26A17B; }
+        .badge {
+            background: rgba(38,161,123,0.1); border: 1px solid #26A17B;
+            padding: 8px 16px; border-radius: 50px; font-size: 14px; color: #26A17B;
+        }
+        .hero { text-align: center; padding: 80px 0; }
+        h1 { font-size: 52px; font-weight: 800; margin-bottom: 20px; }
+        .contract-box {
+            background: rgba(255,255,255,0.05); border-radius: 12px;
+            padding: 20px; margin: 30px 0; font-family: monospace;
+            border: 1px solid #26A17B; word-break: break-all;
+        }
+        .btn {
+            background: #26A17B; color: white; border: none;
+            padding: 15px 30px; border-radius: 8px; font-size: 16px;
+            cursor: pointer; margin: 10px; text-decoration: none; display: inline-block;
+        }
+        .disclaimer {
+            background: #332d1f; border-left: 5px solid #ffc107;
+            padding: 20px; margin: 40px 0; border-radius: 8px;
+            color: #ffc107; font-weight: 500;
+        }
+        .footer { text-align: center; padding: 40px 0; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">₮ Tether USD</div>
+            <div><span class="badge">Academic Project</span></div>
+        </nav>
+
+        <div class="hero">
+            <h1>Tether USD<br>Academic Edition</h1>
+            <p>Advanced ERC20 token with blacklist, pause, and fee mechanisms</p>
+            
+            <div class="contract-box">
+                <strong>Contract Address:</strong><br>
+                0x00c65F601b66849112664173a0Ac3597AcBcA3Ab
+                <br><br>
+                <button class="btn" onclick="copyAddress()">Copy Address</button>
+                <a href="https://etherscan.io/address/0x00c65F601b66849112664173a0Ac3597AcBcA3Ab" class="btn" target="_blank">View on Etherscan</a>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            ⚠️ ACADEMIC PROJECT: This is a university blockchain demonstration. 
+            Not affiliated with Tether Ltd. For educational purposes only.
+        </div>
+
+        <footer class="footer">
+            <p>Created by Omar Lugya Mohamed | Blockchain Developer</p>
+            <p>📧 Contact via GitHub | 🔗 @OmarLugya</p>
+            <p style="margin-top: 20px; font-size: 12px;">© 2026 Tether USD Academic Project</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyAddress() {
+            navigator.clipboard.writeText('0x00c65F601b66849112664173a0Ac3597AcBcA3Ab');
+            alert('Contract address copied!');
+        }
+    </script>
+</body>
+</html>
