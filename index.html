@@ -13,6 +13,20 @@
             line-height: 1.6;
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* DISCLAIMER BANNER */
+        .disclaimer-banner {
+            background: #ffd700;
+            color: #000;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            border-bottom: 3px solid #ffaa00;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
         .navbar {
             display: flex; justify-content: space-between; align-items: center;
             padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -22,7 +36,56 @@
             background: rgba(38,161,123,0.1); border: 1px solid #26A17B;
             padding: 8px 16px; border-radius: 50px; font-size: 14px; color: #26A17B;
         }
-        .hero { text-align: center; padding: 80px 0; }
+        
+        /* Founder Section */
+        .founder-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            border: 1px solid #26A17B;
+        }
+        .founder-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #26A17B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            border: 4px solid white;
+        }
+        .founder-info h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .founder-info p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            background: #26A17B;
+        }
+        
+        .hero { text-align: center; padding: 60px 0; }
         h1 { font-size: 52px; font-weight: 800; margin-bottom: 20px; }
         .contract-box {
             background: rgba(255,255,255,0.05); border-radius: 12px;
@@ -34,20 +97,87 @@
             padding: 15px 30px; border-radius: 8px; font-size: 16px;
             cursor: pointer; margin: 10px; text-decoration: none; display: inline-block;
         }
-        .disclaimer {
-            background: #332d1f; border-left: 5px solid #ffc107;
-            padding: 20px; margin: 40px 0; border-radius: 8px;
-            color: #ffc107; font-weight: 500;
+        
+        /* Add to Wallet Button */
+        .wallet-btn {
+            background: #26A17B;
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 30px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
         }
+        .wallet-btn:hover {
+            background: #1e7a5c;
+            transform: translateY(-2px);
+        }
+        
+        /* Whitepaper Section */
+        .whitepaper-section {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        .whitepaper-btn {
+            background: white;
+            color: #0a0b0d;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        /* Footer Disclaimer */
+        .footer-disclaimer {
+            background: rgba(255,215,0,0.1);
+            border: 1px solid #ffd700;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 40px 0;
+            text-align: center;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
         .footer { text-align: center; padding: 40px 0; color: #666; }
     </style>
 </head>
 <body>
+    <!-- TOP DISCLAIMER BANNER -->
+    <div class="disclaimer-banner">
+        ⚠️ ACADEMIC PROJECT: This is a university blockchain demonstration. 
+        <strong>NOT affiliated with Tether Ltd.</strong> For educational purposes only.
+    </div>
+
     <div class="container">
         <nav class="navbar">
-            <div class="logo">₮ Tether USD</div>
-            <div><span class="badge">Academic Project</span></div>
+            <div class="logo">₮ Tether USD Academic</div>
+            <div><span class="badge">Verified • Educational</span></div>
         </nav>
+
+        <!-- FOUNDER SECTION -->
+        <div class="founder-section">
+            <div class="founder-photo">OM</div>
+            <div class="founder-info">
+                <h2>Omar Lugya Mohamed</h2>
+                <p>Blockchain Developer | Computer Science Student</p>
+                <p>🔗 GitHub: @OmarLugya</p>
+                <p>📧 Project Email: omarlugya@users.noreply.github.com</p>
+                <div class="social-links">
+                    <a href="https://github.com/OmarLugya" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">LinkedIn (Coming Soon)</a>
+                </div>
+            </div>
+        </div>
 
         <div class="hero">
             <h1>Tether USD<br>Academic Edition</h1>
@@ -57,20 +187,30 @@
                 <strong>Contract Address:</strong><br>
                 0x00c65F601b66849112664173a0Ac3597AcBcA3Ab
                 <br><br>
-                <button class="btn" onclick="copyAddress()">Copy Address</button>
-                <a href="https://etherscan.io/address/0x00c65F601b66849112664173a0Ac3597AcBcA3Ab" class="btn" target="_blank">View on Etherscan</a>
+                <button class="btn" onclick="copyAddress()">📋 Copy Address</button>
+                <a href="https://etherscan.io/address/0x00c65F601b66849112664173a0Ac3597AcBcA3Ab" class="btn" target="_blank">🔍 View on Etherscan</a>
+            </div>
+
+            <!-- EIP-747 ADD TO WALLET BUTTON -->
+            <div style="text-align: center; margin: 40px 0;">
+                <button id="addTokenButton" class="wallet-btn">
+                    ➕ Add USDT to Your Wallet
+                </button>
             </div>
         </div>
 
-        <div class="disclaimer">
-            ⚠️ ACADEMIC PROJECT: This is a university blockchain demonstration. 
-            Not affiliated with Tether Ltd. For educational purposes only.
+        <!-- BOTTOM DISCLAIMER -->
+        <div class="footer-disclaimer">
+            ⚠️ <strong>IMPORTANT DISCLAIMER:</strong> This is an ACADEMIC BLOCKCHAIN PROJECT created by Omar Lugya Mohamed 
+            for a university course. It is NOT affiliated with, endorsed by, or connected to Tether Ltd. or the official 
+            Tether USD (USDT) stablecoin. The token has no monetary value and is for educational purposes only. 
+            Do not use for trading.
         </div>
 
         <footer class="footer">
             <p>Created by Omar Lugya Mohamed | Blockchain Developer</p>
-            <p>📧 Contact via GitHub | 🔗 @OmarLugya</p>
-            <p style="margin-top: 20px; font-size: 12px;">© 2026 Tether USD Academic Project</p>
+            <p>📧 Project Email: omarlugya@users.noreply.github.com | 🔗 GitHub: @OmarLugya</p>
+            <p style="margin-top: 20px; font-size: 12px;">© 2026 Tether USD Academic Project • All rights reserved</p>
         </footer>
     </div>
 
@@ -79,6 +219,59 @@
             navigator.clipboard.writeText('0x00c65F601b66849112664173a0Ac3597AcBcA3Ab');
             alert('Contract address copied!');
         }
+    </script>
+
+    <!-- EIP-747 wallet_watchAsset API Script -->
+    <script>
+        document.getElementById('addTokenButton').addEventListener('click', async function() {
+            // Token details
+            const tokenAddress = '0x00c65F601b66849112664173a0Ac3597AcBcA3Ab';
+            const tokenSymbol = 'USDT';
+            const tokenDecimals = 6;
+            // Logo URL - make sure this file exists in your repo
+            const tokenImage = 'https://raw.githubusercontent.com/OmarLugya/tether-usd-project/main/logo.png';
+
+            // Check if wallet exists
+            if (typeof window.ethereum === 'undefined') {
+                alert('No wallet detected. Please install MetaMask, Coinbase Wallet, or another Web3 wallet.');
+                return;
+            }
+
+            try {
+                console.log('Sending wallet_watchAsset request...');
+                
+                const wasAdded = await window.ethereum.request({
+                    method: 'wallet_watchAsset',
+                    params: {
+                        type: 'ERC20',
+                        options: {
+                            address: tokenAddress,
+                            symbol: tokenSymbol,
+                            decimals: tokenDecimals,
+                            image: tokenImage,
+                        },
+                    },
+                });
+
+                if (wasAdded) {
+                    alert('✅ Success! USDT has been added to your wallet.');
+                } else {
+                    alert('You declined to add the token. You can try again anytime.');
+                }
+            } catch (error) {
+                console.error('Error adding token:', error);
+                
+                if (error.code === 4001) {
+                    alert('You rejected the request in your wallet.');
+                } else if (error.code === -32602) {
+                    alert('There was an error with the token information. Please check the contract address, symbol, and decimals.');
+                } else if (error.message && error.message.includes('Network')) {
+                    alert('Please ensure you are connected to the Ethereum Mainnet in your wallet.');
+                } else {
+                    alert('An unexpected error occurred. Make sure you are on the Ethereum network and try again.');
+                }
+            }
+        });
     </script>
 </body>
 </html>
