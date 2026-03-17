@@ -20,7 +20,7 @@ Advanced ERC20 token implementation with security features including blacklist, 
 - ✅ Verified on Etherscan
 
 ## Live Website
-https://omarLugya.github.io/tether-USD-project
+https://omarLugya.github.io/tether-usd-project
 
 ## Important Disclaimer
 ⚠️ This is an ACADEMIC PROJECT for educational purposes. Not affiliated with Tether Ltd. Do not use for trading.
