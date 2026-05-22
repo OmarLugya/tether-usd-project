@@ -5,7 +5,7 @@ Advanced ERC20 token implementation with security features including blacklist, 
 
 ## Contract Details
 - **Network:** Ethereum Mainnet
-- **Address:** `0x00c65F601b66849112664173a0Ac3597AcBcA3Ab`
+- **Address:** `TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz`
 - **Name:** Tether USD
 - **Symbol:** USDT
 - **Decimals:** 6
