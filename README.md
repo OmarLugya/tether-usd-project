@@ -9,7 +9,7 @@ Advanced TRC20 token implementation with security features including blacklist, 
 - **Name:** Tether USD
 - **Symbol:** USDT
 - **Decimals:** 6
-- **Total Supply:** 100,000,000,000 USDT
+- **Total Supply:** 100,000,000,000,000 USDT
 
 ## Features
 - ✅ Blacklist management
