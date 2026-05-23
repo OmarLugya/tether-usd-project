@@ -1,15 +1,15 @@
 # Tether USD Academic Blockchain Project
 
 ## Project Overview
-Advanced ERC20 token implementation with security features including blacklist, pausable transfers, and fee mechanism. Fully verified on Etherscan.
+Advanced TRC20 token implementation with security features including blacklist, pausable transfers, and fee mechanism. Fully verified on Tronscan.
 
 ## Contract Details
-- **Network:** Ethereum Mainnet
+- **Network:** Tron Mainnet
 - **Address:** `TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz`
 - **Name:** Tether USD
 - **Symbol:** USDT
 - **Decimals:** 6
-- **Total Supply:** 100,000,000 USDT
+- **Total Supply:** 100,000,000,000 USDT
 
 ## Features
 - ✅ Blacklist management
@@ -17,7 +17,7 @@ Advanced ERC20 token implementation with security features including blacklist, 
 - ✅ Configurable fee mechanism
 - ✅ Multi-sig capable ownership
 - ✅ Mint & burn functions
-- ✅ Verified on Etherscan
+- ✅ Verified on Tronscan
 
 ## Live Website
 https://omarLugya.github.io/tether-usd-project
