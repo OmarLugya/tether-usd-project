@@ -1,339 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tether USD • Academic Blockchain Project</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0a0b0d 0%, #1a1b1f 100%);
-            color: white;
-            line-height: 1.6;
-        }
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        
-        /* DISCLAIMER BANNER */
-        .disclaimer-banner {
-            background: #ffd700;
-            color: #000;
-            text-align: center;
-            padding: 15px;
-            font-weight: bold;
-            border-bottom: 3px solid #ffaa00;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .navbar {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .logo { font-size: 24px; font-weight: 700; color: #26A17B; }
-        .badge {
-            background: rgba(38,161,123,0.1); border: 1px solid #26A17B;
-            padding: 8px 16px; border-radius: 50px; font-size: 14px; color: #26A17B;
-        }
-        
-        /* Founder Section */
-        .founder-section {
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            border: 1px solid #26A17B;
-        }
-        .founder-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: #26A17B;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: white;
-            border: 4px solid white;
-        }
-        .founder-info h2 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-        .founder-info p {
-            color: #aaa;
-            margin-bottom: 20px;
-        }
-        .social-links {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.1);
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .social-links a:hover {
-            background: #26A17B;
-        }
-        
-        .hero { text-align: center; padding: 60px 0; }
-        h1 { font-size: 52px; font-weight: 800; margin-bottom: 20px; }
-        .contract-box {
-            background: rgba(255,255,255,0.05); border-radius: 12px;
-            padding: 20px; margin: 30px 0; font-family: monospace;
-            border: 1px solid #26A17B; word-break: break-all;
-        }
-        .btn {
-            background: #26A17B; color: white; border: none;
-            padding: 15px 30px; border-radius: 8px; font-size: 16px;
-            cursor: pointer; margin: 10px; text-decoration: none; display: inline-block;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background: #1e7a5c;
-            transform: translateY(-2px);
-        }
-        
-        /* Add to Wallet Button */
-        .wallet-btn {
-            background: #26A17B;
-            color: white;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 30px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: 0.3s;
-        }
-        .wallet-btn:hover {
-            background: #1e7a5c;
-            transform: translateY(-2px);
-        }
-        
-        /* Links Section */
-        .links-section {
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-            text-align: center;
-        }
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .link-card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 20px;
-            text-decoration: none;
-            color: white;
-            transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .link-card:hover {
-            border-color: #26A17B;
-            transform: translateY(-2px);
-        }
-        .link-icon {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-        
-        /* Footer Disclaimer */
-        .footer-disclaimer {
-            background: rgba(255,215,0,0.1);
-            border: 1px solid #ffd700;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 40px 0;
-            text-align: center;
-            color: #ffd700;
-            font-weight: bold;
-        }
-        
-        .footer { text-align: center; padding: 40px 0; color: #666; }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tether USD • Academic Blockchain Project</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f1117;
+      color: #e0e0e0;
+      min-height: 100vh;
+    }
+
+    /* Banner */
+    .banner {
+      background: #2a2000;
+      border-bottom: 2px solid #f59e0b;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: #f59e0b;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1a1f2e, #0d1117);
+      border-bottom: 1px solid #26A17B33;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo-circle {
+      width: 48px; height: 48px;
+      background: #26A17B;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 900; color: white;
+    }
+    header h1 { font-size: 20px; color: #26A17B; }
+    header p  { font-size: 12px; color: #888; margin-top: 2px; }
+    .badge {
+      margin-left: auto;
+      background: #0d2e1f;
+      border: 1px solid #26A17B;
+      color: #26A17B;
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* Profile card */
+    .profile {
+      background: #161b27;
+      border: 1px solid #26A17B33;
+      border-radius: 16px;
+      padding: 28px;
+      max-width: 700px;
+      margin: 32px auto 0;
+      text-align: center;
+    }
+    .avatar {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, #26A17B, #1a7a5e);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-weight: 700; color: white;
+      margin: 0 auto 16px;
+    }
+    .profile h2 { font-size: 20px; color: #fff; }
+    .profile p  { font-size: 13px; color: #888; margin-top: 4px; }
+    .profile-links {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 10px; margin-top: 18px;
+    }
+    .profile-links a {
+      background: #1e2535;
+      border: 1px solid #333;
+      color: #ccc;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .profile-links a:hover { border-color: #26A17B; color: #26A17B; }
+
+    /* Main content */
+    main {
+      max-width: 700px;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .card {
+      background: #161b27;
+      border: 1px solid #26A17B33;
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .card h2 {
+      font-size: 18px;
+      color: #26A17B;
+      margin-bottom: 6px;
+    }
+    .card p {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 16px;
+    }
+
+    /* Contract address box */
+    .contract-box {
+      background: #0d1117;
+      border: 1px solid #26A17B55;
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .contract-box span {
+      font-family: monospace;
+      font-size: 13px;
+      color: #26A17B;
+      word-break: break-all;
+    }
+    .copy-btn {
+      background: #26A17B;
+      color: white;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .copy-btn:hover { background: #1d8a6a; }
+
+    .tronscan-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      background: #0d2e1f;
+      border: 1px solid #26A17B;
+      color: #26A17B;
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .tronscan-link:hover { background: #26A17B; color: white; }
+
+    /* Quick Links */
+    .quick-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quick-links a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #0d1117;
+      border: 1px solid #26A17B33;
+      border-radius: 10px;
+      padding: 13px 16px;
+      text-decoration: none;
+      color: #ccc;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .quick-links a:hover { border-color: #26A17B; color: #26A17B; }
+    .quick-links .icon {
+      font-size: 20px;
+      width: 36px; height: 36px;
+      background: #1e2535;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .quick-links .link-info strong { display: block; color: #fff; font-size: 13px; }
+    .quick-links .link-info span   { font-size: 11px; color: #666; }
+
+    /* Disclaimer */
+    .disclaimer {
+      background: #1a1000;
+      border: 1px solid #f59e0b55;
+      border-radius: 12px;
+      padding: 18px;
+      font-size: 12px;
+      color: #aaa;
+      line-height: 1.6;
+    }
+    .disclaimer strong { color: #f59e0b; }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: #555;
+      border-top: 1px solid #1e2535;
+    }
+    footer a { color: #26A17B; text-decoration: none; }
+  </style>
 </head>
 <body>
-    <!-- TOP DISCLAIMER BANNER -->
-    <div class="disclaimer-banner">
-        ⚠️ ACADEMIC PROJECT: This is a university blockchain demonstration. 
-        <strong>NOT affiliated with Tether Ltd.</strong> For educational purposes only.
+
+  <div class="banner">
+    ⚠️ ACADEMIC PROJECT: This is a university blockchain demonstration. <strong>NOT affiliated with Tether Ltd.</strong> For educational purposes only.
+  </div>
+
+  <header>
+    <div class="logo-circle">₮</div>
+    <div>
+      <h1>Tether USD Academic</h1>
+      <p>TRC20 Token on TRON Network</p>
+    </div>
+    <div class="badge">✓ Verified • Educational</div>
+  </header>
+
+  <div class="profile">
+    <div class="avatar">OM</div>
+    <h2>Omar Lugya Mohamed</h2>
+    <p>Blockchain Developer | Computer Science Student</p>
+    <p style="margin-top:6px;">🔗 GitHub: @OmarLugya &nbsp;|&nbsp; 📧 lugyao40@gmail.com</p>
+    <div class="profile-links">
+      <a href="https://github.com/OmarLugya" target="_blank">📦 GitHub</a>
+      <a href="https://tronscan.org/#/contract/TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz" target="_blank">🔍 TRONSCAN</a>
+      <a href="mailto:lugyao40@gmail.com">📧 Email</a>
+      <a href="#">🔗 LinkedIn</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- Contract Info -->
+    <div class="card">
+      <h2>₮ Tether USD — Academic Edition</h2>
+      <p>TRC20 token on TRON network with blacklist, pause, and mint controls.</p>
+      <div class="contract-box">
+        <span id="contractAddr">TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz</span>
+        <button class="copy-btn" onclick="copyAddress()">📋 Copy Address</button>
+      </div>
+      <a class="tronscan-link"
+         href="https://tronscan.org/#/contract/TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz"
+         target="_blank">
+        🔍 View on TRONSCAN
+      </a>
     </div>
 
-    <div class="container">
-        <nav class="navbar">
-            <div class="logo">₮ Tether USD Academic</div>
-            <div><span class="badge">Verified • Educational</span></div>
-        </nav>
-
-        <!-- FOUNDER SECTION -->
-        <div class="founder-section">
-            <div class="founder-photo">OM</div>
-            <div class="founder-info">
-                <h2>Omar Lugya Mohamed</h2>
-                <p>Blockchain Developer | Computer Science Student</p>
-                <p>🔗 GitHub: @OmarLugya</p>
-                <p>📧 Contact: lugyao40@gmail.com</p>
-                <div class="social-links">
-                    <a href="https://github.com/OmarLugya" target="_blank">
-                        <span>📦</span> GitHub
-                    </a>
-                    <a href="https://etherscan.io/address/0x00c65F601b66849112664173a0Ac3597AcBcA3Ab" target="_blank">
-                        <span>🔍</span> Etherscan
-                    </a>
-                    <a href="mailto:lugyao40@gmail.com">
-                        <span>📧</span> Email
-                    </a>
-                    <a href="#" target="_blank">
-                        <span>🔗</span> LinkedIn
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero">
-            <h1>Tether USD<br>Academic Edition</h1>
-            <p>Advanced ERC20 token with blacklist, pause, and fee mechanisms</p>
-            
-            <div class="contract-box">
-                <strong>Contract Address:</strong><br>
-                0x00c65F601b66849112664173a0Ac3597AcBcA3Ab
-                <br><br>
-                <button class="btn" onclick="copyAddress()">📋 Copy Address</button>
-                <a href="https://etherscan.io/address/0x00c65F601b66849112664173a0Ac3597AcBcA3Ab" class="btn" target="_blank">🔍 View on Etherscan</a>
-            </div>
-
-            <!-- EIP-747 ADD TO WALLET BUTTON -->
-            <div style="text-align: center; margin: 40px 0;">
-                <button id="addTokenButton" class="wallet-btn">
-                    ➕ Add USDT to Your Wallet
-                </button>
-            </div>
-        </div>
-
-        <!-- QUICK LINKS SECTION -->
-        <div class="links-section">
-            <h2>🔗 Quick Links</h2>
-            <div class="links-grid">
-                <a href="https://github.com/OmarLugya/tether-usd-project" class="link-card" target="_blank">
-                    <div class="link-icon">📦</div>
-                    <h3>GitHub Repository</h3>
-                    <p>Source code and documentation</p>
-                </a>
-                
-                <a href="https://etherscan.io/address/0x00c65F601b66849112664173a0Ac3597AcBcA3Ab#code" class="link-card" target="_blank">
-                    <div class="link-icon">🔍</div>
-                    <h3>Verified Contract</h3>
-                    <p>View on Etherscan</p>
-                </a>
-                
-                <a href="mailto:lugyao40@gmail.com" class="link-card">
-                    <div class="link-icon">📧</div>
-                    <h3>Email Contact</h3>
-                    <p>lugyao40@gmail.com</p>
-                </a>
-                
-                <a href="#" class="link-card" target="_blank">
-                    <div class="link-icon">🔗</div>
-                    <h3>LinkedIn Profile</h3>
-                    <p>Coming soon</p>
-                </a>
-            </div>
-        </div>
-
-        <!-- BOTTOM DISCLAIMER -->
-        <div class="footer-disclaimer">
-            ⚠️ <strong>IMPORTANT DISCLAIMER:</strong> This is an ACADEMIC BLOCKCHAIN PROJECT created by Omar Lugya Mohamed 
-            for a university course. It is NOT affiliated with, endorsed by, or connected to Tether Ltd. or the official 
-            Tether USD (USDT) stablecoin. The token has no monetary value and is for educational purposes only. 
-            Do not use for trading.
-        </div>
-
-        <footer class="footer">
-            <p>Created by Omar Lugya Mohamed | Blockchain Developer</p>
-            <p>📧 Contact: <a href="mailto:lugyao40@gmail.com" style="color: #26A17B; text-decoration: none;">lugyao40@gmail.com</a> | 🔗 GitHub: <a href="https://github.com/OmarLugya" style="color: #26A17B; text-decoration: none;" target="_blank">@OmarLugya</a></p>
-            <p style="margin-top: 20px; font-size: 12px;">© 2026 Tether USD Academic Project • All rights reserved</p>
-        </footer>
+    <!-- Quick Links -->
+    <div class="card">
+      <h2>🔗 Quick Links</h2>
+      <p>Everything you need in one place.</p>
+      <div class="quick-links">
+        <a href="https://github.com/OmarLugya/tether-usd-project" target="_blank">
+          <div class="icon">📦</div>
+          <div class="link-info">
+            <strong>GitHub Repository</strong>
+            <span>Source code and documentation</span>
+          </div>
+        </a>
+        <a href="https://tronscan.org/#/contract/TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz/code" target="_blank">
+          <div class="icon">🔍</div>
+          <div class="link-info">
+            <strong>Verified Contract</strong>
+            <span>View on TRONSCAN</span>
+          </div>
+        </a>
+        <a href="mailto:lugyao40@gmail.com">
+          <div class="icon">📧</div>
+          <div class="link-info">
+            <strong>Email Contact</strong>
+            <span>lugyao40@gmail.com</span>
+          </div>
+        </a>
+        <a href="#">
+          <div class="icon">🔗</div>
+          <div class="link-info">
+            <strong>LinkedIn Profile</strong>
+            <span>Coming soon</span>
+          </div>
+        </a>
+      </div>
     </div>
 
-    <script>
-        function copyAddress() {
-            navigator.clipboard.writeText('0x00c65F601b66849112664173a0Ac3597AcBcA3Ab');
-            alert('Contract address copied!');
-        }
-    </script>
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+      ⚠️ <strong>IMPORTANT DISCLAIMER:</strong> This is an ACADEMIC BLOCKCHAIN PROJECT created by
+      Omar Lugya Mohamed for a university course. It is NOT affiliated with, endorsed by, or connected
+      to Tether Ltd. or the official Tether USD (USDT) stablecoin. The token has no monetary value
+      and is for educational purposes only. Do not use for trading.
+    </div>
 
-    <!-- EIP-747 wallet_watchAsset API Script -->
-    <script>
-        document.getElementById('addTokenButton').addEventListener('click', async function() {
-            // Token details
-            const tokenAddress = '0x00c65F601b66849112664173a0Ac3597AcBcA3Ab';
-            const tokenSymbol = 'USDT';
-            const tokenDecimals = 6;
-            // Logo URL - make sure this file exists in your repo
-            const tokenImage = 'https://raw.githubusercontent.com/OmarLugya/tether-usd-project/main/logo.png';
+  </main>
 
-            // Check if wallet exists
-            if (typeof window.ethereum === 'undefined') {
-                alert('No wallet detected. Please install MetaMask, Coinbase Wallet, or another Web3 wallet.');
-                return;
-            }
+  <footer>
+    Created by Omar Lugya Mohamed | Blockchain Developer<br/>
+    📧 <a href="mailto:lugyao40@gmail.com">lugyao40@gmail.com</a> &nbsp;|&nbsp;
+    🔗 <a href="https://github.com/OmarLugya" target="_blank">@OmarLugya</a><br/><br/>
+    © 2026 Tether USD Academic Project • All rights reserved
+  </footer>
 
-            try {
-                console.log('Sending wallet_watchAsset request...');
-                
-                const wasAdded = await window.ethereum.request({
-                    method: 'wallet_watchAsset',
-                    params: {
-                        type: 'ERC20',
-                        options: {
-                            address: tokenAddress,
-                            symbol: tokenSymbol,
-                            decimals: tokenDecimals,
-                            image: tokenImage,
-                        },
-                    },
-                });
+  <script>
+    function copyAddress() {
+      const addr = document.getElementById('contractAddr').innerText;
+      navigator.clipboard.writeText(addr).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy Address', 2000);
+      });
+    }
+  </script>
 
-                if (wasAdded) {
-                    alert('✅ Success! USDT has been added to your wallet.');
-                } else {
-                    alert('You declined to add the token. You can try again anytime.');
-                }
-            } catch (error) {
-                console.error('Error adding token:', error);
-                
-                if (error.code === 4001) {
-                    alert('You rejected the request in your wallet.');
-                } else if (error.code === -32602) {
-                    alert('There was an error with the token information. Please check the contract address, symbol, and decimals.');
-                } else if (error.message && error.message.includes('Network')) {
-                    alert('Please ensure you are connected to the Ethereum Mainnet in your wallet.');
-                } else {
-                    alert('An unexpected error occurred. Make sure you are on the Ethereum network and try again.');
-                }
-            }
-        });
-    </script>
 </body>
 </html>
