@@ -1,0 +1,20 @@
+{
+  "name": "TetherUSD Token SunList",
+  "logoURI": "https://omarlugya.github.io/tether-usd-project/logo.png",
+  "timestamp": 1748044800000,
+  "tokens": [
+    {
+      "chainId": 1,
+      "address": "TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz",
+      "name": "TetherUSD",
+      "symbol": "USDT",
+      "decimals": 6,
+      "logoURI": "https://omarlugya.github.io/tether-usd-project/logo.png"
+    }
+  ],
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  }
+}
