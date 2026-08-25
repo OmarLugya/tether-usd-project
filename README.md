@@ -5,7 +5,7 @@ Advanced TRC20 token implementation with security features including blacklist, 
 
 ## Contract Details
 - **Network:** Tron Mainnet
-- **Address:** `TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz`
+- **Address:** `TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m`
 - **Name:** Tether USD
 - **Symbol:** USDT
 - **Decimals:** 6
