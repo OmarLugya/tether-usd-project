@@ -3,13 +3,8 @@ pragma solidity ^0.8.0;
 
 /**
  * @title TetherUSD (USDT) — TRC-20 Token on TRON Network
- * @dev Full TRC-20 implementation with minting, burning, pause, and blacklist controls.
- *      Deploy via TronIDE (https://tronide.io) or TronBox targeting the TRON mainnet/Shasta testnet.
+ * @dev Full TRC-20 implementation with minting, burning, pause, blacklist, and trading lock.
  */
-
-// ─────────────────────────────────────────────
-//  Interfaces
-// ─────────────────────────────────────────────
 
 interface ITRC20 {
     function totalSupply() external view returns (uint256);
@@ -106,16 +101,24 @@ contract TetherUSD is ITRC20, Pausable {
     mapping(address => mapping(address => uint256)) private _allowances;
     mapping(address => bool)                        private _blacklisted;
 
-    // ── Events ──────────────────────────────
+    // ── Modifiers ───────────────────────────
+    modifier notBlacklisted(address account) {
+        require(!_blacklisted[account], "TetherUSD: address is blacklisted");
+        _;
+    }
+
+    // ── Trading lock ────────────────────────
+    bool public tradingEnabled = false;
+
     event Mint(address indexed to, uint256 amount);
     event Burn(address indexed from, uint256 amount);
     event Blacklisted(address indexed account);
     event UnBlacklisted(address indexed account);
     event DestroyedBlackFunds(address indexed blackListedUser, uint256 balance);
+    event TradingEnabled();
 
-    // ── Modifiers ───────────────────────────
-    modifier notBlacklisted(address account) {
-        require(!_blacklisted[account], "TetherUSD: address is blacklisted");
+    modifier tradingAllowed(address from, address to) {
+        require(tradingEnabled, "Trading is disabled");
         _;
     }
 
@@ -126,6 +129,11 @@ contract TetherUSD is ITRC20, Pausable {
      */
     constructor(uint256 initialSupply) {
         _mint(msg.sender, initialSupply * (10 ** uint256(decimals)));
+    }
+
+    function enableTrading() external onlyOwner {
+        tradingEnabled = true;
+        emit TradingEnabled();
     }
 
     // ════════════════════════════════════════
@@ -144,6 +152,7 @@ contract TetherUSD is ITRC20, Pausable {
         external
         override
         whenNotPaused
+        tradingAllowed(msg.sender, recipient)
         notBlacklisted(msg.sender)
         notBlacklisted(recipient)
         returns (bool)
@@ -160,6 +169,7 @@ contract TetherUSD is ITRC20, Pausable {
         external
         override
         whenNotPaused
+        tradingAllowed(msg.sender, spender)
         notBlacklisted(msg.sender)
         notBlacklisted(spender)
         returns (bool)
@@ -172,6 +182,7 @@ contract TetherUSD is ITRC20, Pausable {
         external
         override
         whenNotPaused
+        tradingAllowed(sender, recipient)
         notBlacklisted(sender)
         notBlacklisted(recipient)
         notBlacklisted(msg.sender)
@@ -186,13 +197,10 @@ contract TetherUSD is ITRC20, Pausable {
 
     // ── Allowance helpers ───────────────────
 
-    /**
-     * @dev Atomically increases the allowance granted to `spender`.
-     *      Preferred over a second call to approve() to avoid front-running.
-     */
     function increaseAllowance(address spender, uint256 addedValue)
         external
         whenNotPaused
+        tradingAllowed(msg.sender, spender)
         returns (bool)
     {
         _approve(msg.sender, spender, _allowances[msg.sender][spender] + addedValue);
@@ -202,6 +210,7 @@ contract TetherUSD is ITRC20, Pausable {
     function decreaseAllowance(address spender, uint256 subtractedValue)
         external
         whenNotPaused
+        tradingAllowed(msg.sender, spender)
         returns (bool)
     {
         uint256 current = _allowances[msg.sender][spender];
@@ -214,23 +223,14 @@ contract TetherUSD is ITRC20, Pausable {
     //  Owner-only: Mint & Burn
     // ════════════════════════════════════════
 
-    /**
-     * @dev Mint new tokens to `to`. Amount is in base units (already scaled).
-     */
     function mint(address to, uint256 amount) external onlyOwner {
         _mint(to, amount);
     }
 
-    /**
-     * @dev Burn tokens from the caller's balance.
-     */
     function burn(uint256 amount) external {
         _burn(msg.sender, amount);
     }
 
-    /**
-     * @dev Owner can burn tokens from any address (e.g. redeem flow).
-     */
     function burnFrom(address account, uint256 amount) external onlyOwner {
         _burn(account, amount);
     }
@@ -253,9 +253,6 @@ contract TetherUSD is ITRC20, Pausable {
         return _blacklisted[account];
     }
 
-    /**
-     * @dev Seize and burn all tokens held by a blacklisted address.
-     */
     function destroyBlackFunds(address blackListedUser) external onlyOwner {
         require(_blacklisted[blackListedUser], "TetherUSD: address is not blacklisted");
         uint256 dirtyFunds = _balances[blackListedUser];
