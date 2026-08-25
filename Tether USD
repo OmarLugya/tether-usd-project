@@ -482,10 +482,10 @@
                 </div>
                 
                 <div class="hero-buttons">
-                    <a href="https://sunswap.com/#/swap?outputCurrency=TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="btn-primary">
+                    <a href="https://sunswap.com/#/swap?outputCurrency=TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz" target="_blank" class="btn-primary">
                         <i class="fas fa-exchange-alt"></i> Trade on SunSwap
                     </a>
-                    <a href="https://tronscan.org/#/contract/TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="btn-secondary">
+                    <a href="https://tronscan.org/#/contract/TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz" target="_blank" class="btn-secondary">
                         <i class="fas fa-search"></i> View on TRONSCAN
                     </a>
                 </div>
@@ -533,24 +533,24 @@
             <p>Trade or add liquidity on SunSwap</p>
             
             <div class="action-buttons">
-                <a href="https://sunswap.com/#/swap?outputCurrency=TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="action-btn">
+                <a href="https://sunswap.com/#/swap?outputCurrency=TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz" target="_blank" class="action-btn">
                     <i class="fas fa-exchange-alt"></i> Trade on SunSwap
                 </a>
                 
-                <a href="https://sunswap.com/#/add/TRX/TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="action-btn">
+                <a href="https://sunswap.com/#/add/TRX/TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz" target="_blank" class="action-btn">
                     <i class="fas fa-water"></i> Add Liquidity
                 </a>
                 
-                <a href="https://tronscan.org/#/contract/TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="action-btn">
+                <a href="https://tronscan.org/#/contract/TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz" target="_blank" class="action-btn">
                     <i class="fas fa-search"></i> TRONSCAN
                 </a>
             </div>
             
             <div class="sunswap-buttons">
-                <a href="https://sunswap.com/#/swap?outputCurrency=TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="sunswap-btn">
+                <a href="https://sunswap.com/#/swap?outputCurrency=TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz" target="_blank" class="sunswap-btn">
                     <i class="fas fa-exchange-alt"></i> 🔄 Swap Now
                 </a>
-                <a href="https://sunswap.com/#/add/TRX/TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="sunswap-btn">
+                <a href="https://sunswap.com/#/add/TRX/TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz" target="_blank" class="sunswap-btn">
                     <i class="fas fa-water"></i> 💧 Provide Liquidity
                 </a>
             </div>
@@ -558,7 +558,7 @@
             <div id="status"></div>
             
             <div class="contract-address" id="contract">
-                <code>TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m</code>
+                <code>TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz</code>
                 <button class="copy-btn" onclick="copyAddress()"><i class="fas fa-copy"></i> Copy</button>
             </div>
             
@@ -576,7 +576,7 @@
     </div>
 
     <script>
-        const CONTRACT = "TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m";
+        const CONTRACT = "TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz";
         
         function copyAddress() {
             navigator.clipboard.writeText(CONTRACT).then(() => {
