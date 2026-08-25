@@ -69,11 +69,10 @@
             justify-content: center;
             font-size: 28px;
             font-weight: 800;
-            transform: rotate(45deg);
         }
         
         .logo-icon span {
-            transform: rotate(-45deg);
+            color: white;
         }
         
         .logo-text h1 {
@@ -163,6 +162,7 @@
         .hero-buttons {
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
         }
         
         .btn-primary {
@@ -178,6 +178,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            text-decoration: none;
         }
         
         .btn-primary:hover {
@@ -198,6 +199,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            text-decoration: none;
         }
         
         .btn-secondary:hover {
@@ -228,6 +230,7 @@
             justify-content: center;
             font-size: 32px;
             font-weight: 800;
+            color: white;
         }
         
         .token-info h3 {
@@ -357,6 +360,7 @@
             padding: 15px 25px;
             border-radius: 12px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
         
         .contract-address code {
@@ -392,6 +396,37 @@
             text-decoration: none;
         }
         
+        /* SunSwap Buttons */
+        .sunswap-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .sunswap-btn {
+            background: rgba(38, 161, 123, 0.1);
+            border: 1px solid #26A17B;
+            padding: 14px 28px;
+            border-radius: 12px;
+            color: #26A17B;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .sunswap-btn:hover {
+            background: #26A17B;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
         @media (max-width: 768px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -407,6 +442,10 @@
             
             .hero h2 {
                 font-size: 36px;
+            }
+            
+            .actions {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -432,9 +471,9 @@
         
         <section class="hero">
             <div>
-                <span class="hero-badge"><i class="fas fa-check-circle"></i> Verified on Etherscan</span>
+                <span class="hero-badge"><i class="fas fa-check-circle"></i> Verified on TRONSCAN</span>
                 <h2>Tether USD<br>Academic Edition</h2>
-                <p>Advanced ERC20 implementation with blacklist, pause, and fee mechanisms.</p>
+                <p>Advanced TRC20 implementation with blacklist, pause, and mint controls on the TRON Network.</p>
                 
                 <div class="hero-stats">
                     <div><div class="stat-value">100M</div><div class="stat-label">Supply</div></div>
@@ -443,13 +482,11 @@
                 </div>
                 
                 <div class="hero-buttons">
-                    <button class="btn-primary" onclick="addToMetaMask()">
-                        <i class="fas fa-fox"></i> Add to MetaMask
-                    </button>
-                    <a href="https://link.trustwallet.com/add_asset?asset=c60_t0x00c65F601b66849112664173a0Ac3597AcBcA3Ab" target="_blank">
-                        <button class="btn-secondary">
-                            <i class="fas fa-wallet"></i> Trust Wallet
-                        </button>
+                    <a href="https://sunswap.com/#/swap?outputCurrency=TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="btn-primary">
+                        <i class="fas fa-exchange-alt"></i> Trade on SunSwap
+                    </a>
+                    <a href="https://tronscan.org/#/contract/TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="btn-secondary">
+                        <i class="fas fa-search"></i> View on TRONSCAN
                     </a>
                 </div>
             </div>
@@ -459,16 +496,16 @@
                     <div class="token-logo">₮</div>
                     <div class="token-info">
                         <h3>Tether USD</h3>
-                        <p>USDT • 6 Decimals</p>
+                        <p>TRC20 • 6 Decimals</p>
                     </div>
                 </div>
                 <div class="token-detail">
                     <span>Contract</span>
-                    <span class="detail-value">0x00c6...A3Ab</span>
+                    <span class="detail-value">TC44...h1m</span>
                 </div>
                 <div class="token-detail">
                     <span>Network</span>
-                    <span class="detail-value">Ethereum</span>
+                    <span class="detail-value">TRON</span>
                 </div>
             </div>
         </section>
@@ -477,90 +514,77 @@
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-ban"></i></div>
                 <h4>Blacklist</h4>
-                <p>Block suspicious addresses</p>
+                <p>Block suspicious addresses from transferring</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-pause-circle"></i></div>
                 <h4>Pausable</h4>
-                <p>Emergency stop transfers</p>
+                <p>Emergency stop for all transfers</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-percent"></i></div>
-                <h4>Fee System</h4>
-                <p>Configurable transfer fees</p>
+                <div class="feature-icon"><i class="fas fa-coins"></i></div>
+                <h4>Mint Controls</h4>
+                <p>Controlled token minting capability</p>
             </div>
         </section>
         
         <section class="actions" id="actions">
             <h3 style="font-size: 36px; margin-bottom: 20px;">Token Actions</h3>
-            <p>Add to wallet with one click</p>
+            <p>Trade or add liquidity on SunSwap</p>
             
             <div class="action-buttons">
-                <button class="action-btn" onclick="addToMetaMask()">
-                    <i class="fas fa-fox"></i> MetaMask
-                </button>
-                
-                <a href="https://link.trustwallet.com/add_asset?asset=c60_t0x00c65F601b66849112664173a0Ac3597AcBcA3Ab" target="_blank">
-                    <button class="action-btn">
-                        <i class="fas fa-wallet"></i> Trust Wallet
-                    </button>
+                <a href="https://sunswap.com/#/swap?outputCurrency=TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="action-btn">
+                    <i class="fas fa-exchange-alt"></i> Trade on SunSwap
                 </a>
                 
-                <a href="https://metamask.app.link/send/pay?address=0x74594e2C5D0ac70b65Bc62532a6fb7f12bf336cb&token=0x00c65F601b66849112664173a0Ac3597AcBcA3Ab" target="_blank">
-                    <button class="action-btn">
-                        <i class="fas fa-paper-plane"></i> Send to Professor
-                    </button>
+                <a href="https://sunswap.com/#/add/TRX/TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="action-btn">
+                    <i class="fas fa-water"></i> Add Liquidity
+                </a>
+                
+                <a href="https://tronscan.org/#/contract/TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="action-btn">
+                    <i class="fas fa-search"></i> TRONSCAN
+                </a>
+            </div>
+            
+            <div class="sunswap-buttons">
+                <a href="https://sunswap.com/#/swap?outputCurrency=TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="sunswap-btn">
+                    <i class="fas fa-exchange-alt"></i> 🔄 Swap Now
+                </a>
+                <a href="https://sunswap.com/#/add/TRX/TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m" target="_blank" class="sunswap-btn">
+                    <i class="fas fa-water"></i> 💧 Provide Liquidity
                 </a>
             </div>
             
             <div id="status"></div>
             
-            <div class="contract-address">
-                <code>0x00c65F601b66849112664173a0Ac3597AcBcA3Ab</code>
-                <button class="copy-btn" onclick="copyAddress()">Copy</button>
+            <div class="contract-address" id="contract">
+                <code>TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m</code>
+                <button class="copy-btn" onclick="copyAddress()"><i class="fas fa-copy"></i> Copy</button>
+            </div>
+            
+            <div style="margin-top: 20px; font-size: 14px; color: #888;">
+                <i class="fas fa-exclamation-triangle" style="color: #f59e0b;"></i>
+                Academic Project • No Monetary Value • For Educational Purposes Only
             </div>
         </section>
         
         <footer class="footer">
-            <p>© 2026 Tether USD Academic Project</p>
-            <p><a href="mailto:tetherusd.project@gmail.com" class="footer-email">tetherusd.project@gmail.com</a></p>
+            <p>© 2026 Tether USD Academic Project • Created by Omar Lugya Mohamed</p>
+            <p>📧 <a href="mailto:lugyao40@gmail.com" class="footer-email">lugyao40@gmail.com</a></p>
+            <p>🔗 <a href="https://github.com/OmarLugya" class="footer-email">@OmarLugya</a></p>
         </footer>
     </div>
 
     <script>
-        const CONTRACT = "0x00c65F601b66849112664173a0Ac3597AcBcA3Ab";
+        const CONTRACT = "TC44owF5CTAq9Yc6xj29X2wQ3isHM6zh1m";
         
         function copyAddress() {
-            navigator.clipboard.writeText(CONTRACT);
-            alert('Contract address copied!');
-        }
-        
-        async function addToMetaMask() {
-            if (!window.ethereum) {
-                document.getElementById('status').innerHTML = '<div class="status-error">❌ MetaMask not installed</div>';
-                return;
-            }
-            
-            try {
-                const wasAdded = await window.ethereum.request({
-                    method: 'wallet_watchAsset',
-                    params: {
-                        type: 'ERC20',
-                        options: {
-                            address: CONTRACT,
-                            symbol: 'USDT',
-                            decimals: 6,
-                            image: 'https://raw.githubusercontent.com/YOUR_USERNAME/token-assets/main/logo.png'
-                        }
-                    }
-                });
-                
-                if (wasAdded) {
-                    document.getElementById('status').innerHTML = '<div class="status-success">✅ Token added to MetaMask!</div>';
-                }
-            } catch (error) {
-                document.getElementById('status').innerHTML = '<div class="status-error">❌ ' + error.message + '</div>';
-            }
+            navigator.clipboard.writeText(CONTRACT).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✅ Copied!';
+                setTimeout(() => btn.innerHTML = originalText, 2000);
+            });
         }
     </script>
 </body>
