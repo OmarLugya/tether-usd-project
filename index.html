@@ -160,6 +160,48 @@
     }
     .tronscan-link:hover { background: #26A17B; color: white; }
 
+    /* Educational value display */
+    .value-display {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: end;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .value-field label {
+      display: block;
+      color: #888;
+      font-size: 11px;
+      margin-bottom: 6px;
+    }
+    .value-field input,
+    .dollar-value {
+      width: 100%;
+      background: #0d1117;
+      border: 1px solid #26A17B55;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 20px;
+      padding: 12px;
+    }
+    .value-field input:focus { outline: 2px solid #26A17B; }
+    .conversion-sign {
+      color: #26A17B;
+      font-size: 22px;
+      padding-bottom: 12px;
+    }
+    .dollar-value { color: #26A17B; font-weight: 700; }
+    .value-note {
+      color: #666;
+      font-size: 11px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .value-display { grid-template-columns: 1fr; gap: 8px; }
+      .conversion-sign { padding: 0; text-align: center; }
+    }
+
     /* Quick Links */
     .quick-links {
       display: flex;
@@ -267,6 +309,18 @@
           💧 Add Liquidity
         </a>
       </div>
+      <div class="value-display" aria-label="Educational USDT to dollar conversion">
+        <div class="value-field">
+          <label for="usdtAmount">USDT amount</label>
+          <input id="usdtAmount" type="number" min="0" step="0.000001" value="200" inputmode="decimal"/>
+        </div>
+        <div class="conversion-sign" aria-hidden="true">=</div>
+        <div class="value-field">
+          <label for="dollarValue">Example dollar display</label>
+          <div id="dollarValue" class="dollar-value" aria-live="polite">$200.00</div>
+        </div>
+      </div>
+      <p class="value-note">Educational example only: this page displays 1 USDT as $1.00. It is not a live market price or a guarantee of monetary value.</p>
     </div>
 
     <!-- Quick Links -->
@@ -337,6 +391,16 @@
   </footer>
 
   <script>
+    const usdtAmount = document.getElementById('usdtAmount');
+    const dollarValue = document.getElementById('dollarValue');
+
+    usdtAmount.addEventListener('input', () => {
+      const amount = Number(usdtAmount.value);
+      dollarValue.textContent = Number.isFinite(amount)
+        ? `$${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+        : '$0.00';
+    });
+
     function copyAddress() {
       const addr = document.getElementById('contractAddr').innerText;
       navigator.clipboard.writeText(addr).then(() => {
