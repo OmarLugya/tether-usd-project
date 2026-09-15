@@ -3,7 +3,7 @@
 ## Executive Summary
 TetherUSD is an academic blockchain research and development initiative focused on building a secure, programmable, and transparent token infrastructure inspired by the broader stablecoin ecosystem. The project is designed to demonstrate how a digital asset can be structured with controlled issuance, transfer restrictions, transparent ownership, and strong documentation practices suitable for research, education, and future ecosystem partnerships.
 
-The current implementation serves as a technical prototype that highlights core concepts such as supply governance, emergency controls, blacklist support, and auditable token behavior. While the project is not a regulated financial product and is not affiliated with Tether Ltd., it is positioned as an open and educational contribution to the blockchain community.
+The current implementation serves as a technical prototype that highlights core concepts such as supply governance, emergency controls, blacklist support, trading enablement, and auditable token behavior. It includes a verified contract reference and a full trading system flow designed to showcase a realistic token lifecycle from issuance through transfer, allowance management, and liquidity access. While the project is not a regulated financial product and is not affiliated with Tether Ltd., it is positioned as an open and educational contribution to the blockchain community.
 
 ## 1. Project Vision
 The long-term vision of TetherUSD is to create a credible and well-documented blockchain token framework that can evolve from an academic prototype into a more mature digital asset platform. The project aims to showcase how modern token engineering can combine security principles, transparent code architecture, and practical usability in a way that is understandable to developers, educators, and potential sponsors.
@@ -52,6 +52,8 @@ The current token prototype includes the following features:
 - Pausable transfers for emergency response
 - Address blacklisting for restricted account handling
 - Allowance-based transfer flows for delegated spending
+- Trading enablement and token transfer flow controls
+- Verified contract reference for explorer visibility
 - Event emission for traceability and transparency
 
 ### 4.3 Security Principles

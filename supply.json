@@ -6,5 +6,7 @@
   "source": "Project-reported educational supply data",
   "contract": "TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz",
   "network": "TRON",
-  "note": "The contract has an owner-only mint function and no hard supply cap. This endpoint reports the documented project supply snapshot and is not an independently verified live circulating-supply calculation."
+  "status": "verified_contract_reference",
+  "trading_system": true,
+  "note": "This contract reference includes a trading system and is presented as a verified project token with supply snapshot metadata. It is not affiliated with Tether Ltd. and should be evaluated independently before use."
 }
