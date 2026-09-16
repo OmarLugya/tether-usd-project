@@ -244,6 +244,36 @@
     }
     .disclaimer strong { color: #f59e0b; }
 
+    .dapp-status {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .dapp-status-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      background: #0d1117;
+      border: 1px solid #333;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    .dapp-status-row strong { color: #26A17B; text-align: right; word-break: break-all; }
+    .dapp-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .dapp-btn {
+      background: #26A17B;
+      color: #fff;
+      border: 0;
+      border-radius: 8px;
+      padding: 9px 14px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .dapp-btn.secondary { background: #1e2535; border: 1px solid #26A17B; }
+    .dapp-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .dapp-message { color: #aaa; font-size: 12px; min-height: 18px; margin-top: 10px; }
+
     footer {
       text-align: center;
       padding: 24px;
@@ -329,6 +359,26 @@
       <p class="value-note">Educational example only: this page displays 1 USDT as $1.00. It is not a live market price or a guarantee of monetary value.</p>
     </div>
 
+    <div class="card" id="dappManager">
+      <h2>⚙️ Mainnet DApp Manager</h2>
+      <p>Connect TronLink to read this token on TRON Mainnet. Transactions require your wallet confirmation.</p>
+      <div class="contract-box">
+        <span>Network: TRON Mainnet</span>
+        <span id="dappNetworkStatus">Wallet not connected</span>
+      </div>
+      <div class="dapp-status">
+        <div class="dapp-status-row"><span>Wallet</span><strong id="dappWallet">Not connected</strong></div>
+        <div class="dapp-status-row"><span>Token balance</span><strong id="dappBalance">-</strong></div>
+        <div class="dapp-status-row"><span>Trading</span><strong id="dappTrading">-</strong></div>
+      </div>
+      <div class="dapp-actions">
+        <button class="dapp-btn" id="connectWallet" type="button">Connect TronLink</button>
+        <button class="dapp-btn secondary" id="refreshDapp" type="button" disabled>Refresh</button>
+        <button class="dapp-btn secondary" id="enableTrading" type="button" disabled>Enable Trading</button>
+      </div>
+      <p class="dapp-message" id="dappMessage" role="status"></p>
+    </div>
+
     <!-- Quick Links -->
     <div class="card">
       <h2>🔗 Quick Links</h2>
@@ -397,6 +447,83 @@
   </footer>
 
   <script>
+    const CONTRACT = 'TFqSRX1VUJK5MMzgUC2omVb2n8zdBF3KMz';
+    const TOKEN_ABI = [
+      { name: 'balanceOf', type: 'Function', inputs: [{ type: 'address', name: 'account' }], outputs: [{ type: 'uint256', name: '' }] },
+      { name: 'decimals', type: 'Function', inputs: [], outputs: [{ type: 'uint8', name: '' }] },
+      { name: 'tradingEnabled', type: 'Function', inputs: [], outputs: [{ type: 'bool', name: '' }] },
+      { name: 'enableTrading', type: 'Function', inputs: [], outputs: [] }
+    ];
+    const dappWallet = document.getElementById('dappWallet');
+    const dappBalance = document.getElementById('dappBalance');
+    const dappTrading = document.getElementById('dappTrading');
+    const dappMessage = document.getElementById('dappMessage');
+    const refreshDapp = document.getElementById('refreshDapp');
+    const enableTrading = document.getElementById('enableTrading');
+
+    function setDappMessage(message) {
+      dappMessage.textContent = message;
+    }
+
+    function getTronWeb() {
+      return window.tronWeb && window.tronWeb.ready ? window.tronWeb : null;
+    }
+
+    async function refreshDappState() {
+      const tronWeb = getTronWeb();
+      if (!tronWeb) {
+        setDappMessage('Install or unlock TronLink, then connect it to TRON Mainnet.');
+        return;
+      }
+
+      try {
+        const wallet = tronWeb.defaultAddress.base58;
+        const contract = await tronWeb.contract(TOKEN_ABI, CONTRACT);
+        const [balance, decimals, trading] = await Promise.all([
+          contract.balanceOf(wallet).call(),
+          contract.decimals().call(),
+          contract.tradingEnabled().call()
+        ]);
+        const divisor = 10 ** Number(decimals);
+        dappWallet.textContent = wallet;
+        dappBalance.textContent = `${(Number(balance) / divisor).toLocaleString('en-US', { maximumFractionDigits: Number(decimals) })} TUSD`;
+        dappTrading.textContent = trading ? 'Enabled' : 'Disabled';
+        document.getElementById('dappNetworkStatus').textContent = 'Connected';
+        enableTrading.disabled = Boolean(trading);
+        setDappMessage(trading ? 'Mainnet token state loaded.' : 'Trading is disabled. Only the contract owner can enable it.');
+      } catch (error) {
+        setDappMessage(`Unable to read contract: ${error.message || error}`);
+      }
+    }
+
+    document.getElementById('connectWallet').addEventListener('click', async () => {
+      if (!window.tronLink) {
+        setDappMessage('TronLink is not installed in this browser.');
+        return;
+      }
+      try {
+        await window.tronLink.request({ method: 'tron_requestAccounts' });
+        refreshDapp.disabled = false;
+        await refreshDappState();
+      } catch (error) {
+        setDappMessage(`Wallet connection failed: ${error.message || error}`);
+      }
+    });
+
+    refreshDapp.addEventListener('click', refreshDappState);
+    enableTrading.addEventListener('click', async () => {
+      const tronWeb = getTronWeb();
+      if (!tronWeb) return;
+      try {
+        setDappMessage('Confirm enableTrading() in TronLink.');
+        const contract = await tronWeb.contract(TOKEN_ABI, CONTRACT);
+        await contract.enableTrading().send({ feeLimit: 100000000 });
+        await refreshDappState();
+      } catch (error) {
+        setDappMessage(`Transaction failed or cancelled: ${error.message || error}`);
+      }
+    });
+
     const usdtAmount = document.getElementById('usdtAmount');
     const dollarValue = document.getElementById('dollarValue');
 
