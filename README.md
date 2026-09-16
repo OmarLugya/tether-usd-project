@@ -1,4 +1,6 @@
-# Tether USD Academic Blockchain Project
+﻿# Tether USD Academic Blockchain Project
+
+![Tether USD Logo](logo.png)
 
 ## Project Overview
 Advanced TRC20 token implementation with trading controls, blacklist support, pause functionality, mint/burn logic, and ownership management. This project features a verified custom contract on TRON and a complete trading flow for academic blockchain development.
@@ -13,21 +15,22 @@ Advanced TRC20 token implementation with trading controls, blacklist support, pa
 - **Total Supply:** Project-reported supply snapshot
 
 ## Features
-- ✅ Blacklist management
-- ✅ Pausable transfers
-- ✅ Configurable fee mechanism
-- ✅ Ownership controls
-- ✅ Mint & burn functions
-- ✅ Trading enablement flow
-- ✅ Verified on-chain contract reference
-- ✅ Academic blockchain implementation
+- âœ… Blacklist management
+- âœ… Pausable transfers
+- âœ… Configurable fee mechanism
+- âœ… Ownership controls
+- âœ… Mint & burn functions
+- âœ… Trading enablement flow
+- âœ… Verified on-chain contract reference
+- âœ… Academic blockchain implementation
 
 ## Live Website
 https://omarLugya.github.io/tether-usd-project
 
 ## Important Disclaimer
-⚠️ This is an academic blockchain project for educational and research purposes. It is not affiliated with Tether Ltd. and should be evaluated independently before use. The contract is a verified custom TRC20 implementation and is not represented as the official Tether USDT token.
+âš ï¸ This is an academic blockchain project for educational and research purposes. It is not affiliated with Tether Ltd. and should be evaluated independently before use. The contract is a verified custom TRC20 implementation and is not represented as the official Tether USDT token.
 
 ## Creator
 **Omar Lugya Mohamed** - Blockchain Developer
 - GitHub: [@OmarLugya](https://github.com/OmarLugya)
+
