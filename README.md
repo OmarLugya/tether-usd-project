@@ -15,14 +15,14 @@ Advanced TRC20 token implementation with trading controls, blacklist support, pa
 - **Total Supply:** Project-reported supply snapshot
 
 ## Features
-✅ Blacklist management
-✅ Pausable transfers
-✅ Configurable fee mechanism
-✅ Ownership controls
-✅ Mint & burn functions
-✅ Trading enablement flow
-✅ Original contract implementation
-✅ Academic blockchain implementation
+- ✅ Blacklist management
+- ✅ Pausable transfers
+- ✅ Configurable fee mechanism
+- ✅ Ownership controls
+- ✅ Mint & burn functions
+- ✅ Trading enablement flow
+- ✅ Verified on-chain contract reference
+- ✅ Academic blockchain implementation
 ## Live Website
 https://omarLugya.github.io/tether-usd-project
 
