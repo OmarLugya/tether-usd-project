@@ -27,7 +27,7 @@ Advanced TRC20 token implementation with trading controls, blacklist support, pa
 https://omarLugya.github.io/tether-usd-project
 
 ## Important Disclaimer
-âš ï¸ This is an academic blockchain project for educational and research purposes. It is not affiliated with Tether Ltd. and should be evaluated independently before use. The contract is a verified custom TRC20 implementation and is not represented as the official Tether USDT token.
+⚠️ This is an academic blockchain project for educational and research purposes. It is not affiliated with Tether Ltd. and should be evaluated independently before use. The contract is a verified custom TRC20 implementation and is not represented as the official Tether USDT token.
 
 ## Creator
 **Omar Lugya Mohamed** - Blockchain Developer
